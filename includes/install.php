@@ -3,7 +3,8 @@ class install extends base {
 	public $db_host = 'localhost';
 	public $db_prefix = 'a2a_';
 	public $db_port = '3306';
-	public $db_user, $db_password, $db_name;
+	public $db_user, $db_password, $db_name, $email;
+	protected $password;
 	
 	public function __construct() {
 
@@ -45,13 +46,19 @@ class install extends base {
 			$error = $messageStack->add('You must provide a user name!');
 		}
 		if(!$this->db_password) {
-			$error = $messageStack->add('You must provide a password!');
+			$error = $messageStack->add('You must provide a database password!');
 		}
 		if(!$this->db_name) {
 			$error = $messageStack->add('You must provide a database name!');
 		}
 		if(!$this->db_port) {
 			$error = $messageStack->add('You must provide a port number!');
+		}
+		if(!$this->password) {
+			$error = $messageStack->add('You must provide a password!');
+		}
+		if(!$this->email) {
+			$error = $messageStack->add('You must provide an admin email!');
 		}
 		if($error) {
 			return false;
@@ -97,7 +104,7 @@ class install extends base {
 			fclose($config_file);
 			
 		} catch(Exception $e) {
-			$messageStack->add($e->getMessage);
+			$this->messageStack->add($e->getMessage());
 			return false;
 		}
 	}
@@ -140,7 +147,7 @@ class install extends base {
 					 `user_id` int(11) NOT NULL AUTO_INCREMENT,
 					 `name` text NOT NULL,
 					 `email` varchar(96) NOT NULL,
-					 `password` varchar(40) NOT NULL,
+					 `password` varchar(255) NOT NULL,
 					 `permissions` text NOT NULL,
 					 PRIMARY KEY (`user_id`)
 					 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci');

@@ -34,6 +34,9 @@ if(isset($_POST['save'])) {
 <h1>Install</h1>
 <p>This program requires MYSQL and the PHP MySQLi database connector.</p>
 <p>Please enter your connection information below.</p>
+
+<?php echo $install->messageStack->output(); ?>
+
 <form method="post">
 	<label for="db_host">Database Host:</label>
 	<input type="text" name="db_host" id="db_host" value="<?php echo $install->db_host; ?>">

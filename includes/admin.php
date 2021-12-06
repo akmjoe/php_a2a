@@ -8,7 +8,7 @@ class admin {
 	}
 	
 	public function add($data) {
-		$this->db->query('insert into '.DB_PREFIX.'users (`name`,`email`,`password`,`permissions`) values ("'.$this->db->escape($data['name']).'", "'.$this->db->escape($data['email']).'", "'.$this->encode($data['password']).'","'.$this->db->escape(serialize($data['permissions'])).'"');
+		$this->db->query('insert into '.DB_PREFIX.'users (`name`,`email`,`password`,`permissions`) values ("'.$this->db->escape($data['name']).'", "'.$this->db->escape($data['email']).'", "'.$this->encode($data['password']).'","'.$this->db->escape(serialize($data['permissions'])).'")');
 	}
 	
 	public function save($data, $id) {
@@ -34,6 +34,6 @@ class admin {
 	}
 	
 	public function encode($password) {
-		return password_hash($password);
+		return password_hash($password, PASSWORD_DEFAULT);
 	}
 }
