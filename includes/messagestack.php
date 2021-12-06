@@ -1,10 +1,10 @@
 <?php
-public class messageStack {
+class messageStack {
 	private $messages = array();
 	private $debug_text;
 	protected $db;
 	
-	public function __construct($db) {
+	public function __construct($db=null) {
 		$this->db = $db;
 	}
 	

@@ -11,7 +11,7 @@ class base {
 	
 	public function db_connect() {
 		require_once DIR_INCLUDES.'mysqli.php';
-		$this->db = new DB::MySQLi(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT);
+		$this->db = new DB\MySQLi(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT);
 	}
 	
 	public function load_config() {

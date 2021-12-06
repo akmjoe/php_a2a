@@ -3,7 +3,7 @@ class install extends base {
 	public $db_host = 'localhost';
 	public $db_prefix = 'a2a_';
 	public $db_port = '3306';
-	public $db_user $db_password, $db_name;
+	public $db_user, $db_password, $db_name;
 	
 	public function __construct() {
 

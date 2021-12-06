@@ -15,6 +15,9 @@ if(isset($_COOKIE['user']) && !isset($_GET['logout'])) {
 }
 // main handler page
 // load configuration
+if(!file_exists('config.php')) {
+	header('location: install.php');
+}
 require_once 'config.php';
 require_once DIR_INCLUDES.'application_top.php';
 // load page (page classes must extend play)
